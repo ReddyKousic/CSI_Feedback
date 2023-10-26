@@ -62,28 +62,6 @@ def view_feedbacks():
     
 
 
-
-@app.route('/submit_feedback', methods=['POST'])
-def submit_feedback():
-    if request.method == 'POST':
-        name = request.form['name']
-        email = request.form['email']
-        message = request.form['message']
-        
-
-        cur = mysql.connection.cursor()
-        cur.execute("INSERT INTO feedback (name, email, message) VALUES (%s, %s, %s)", (name, email, message))
-        mysql.connection.commit()
-        cur.close()
-
-        msg = Message('New Feedback Submission', sender='CSI@kousicreddy.eu.org', recipients=['kousicreddy39@gmail.com'])
-        msg.body = f'Name: {name}\nEmail: {email}\nMessage: {message}'
-        mail.send(msg)
-
-        flash('Feedback submitted successfully!', 'success')
-        
-        return redirect(url_for('feedback_form'))
-
 if __name__ == '__main__':
     app.secret_key = 'your_secret_key'
     app.run(debug=True)
