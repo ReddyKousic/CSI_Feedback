@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+    <h1>Feedback Collection System</h1>
+    <form id="feedback-form" method="POST" action="">
+        <label for="name">Name:</label>
+        <input type="text" name="name" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" name="email" required><br>
+
+        <label for="message">Message:</label>
+        <textarea name="message" rows="4" required></textarea><br>
+
+        <input type="submit" value="Submit">
+    </form>
+    <div id="loading-container" class="hidden">
+        <div class="loader"></div>
+    </div>
+</body>
+
+</html>
+<!-- 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const feedbackForm = document.getElementById("feedback-form");
+        const loadingContainer = document.getElementById("loading-container");
+
+        feedbackForm.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            // Show the loading animation
+            loadingContainer.style.display = "block";
+
+            // Disable the form while submitting
+            feedbackForm.querySelector('input[type="submit"]').disabled = true;
+
+            // Perform the form submission using JavaScript's Fetch API
+            fetch("/submit_feedback", {
+                method: "POST",
+                body: new FormData(feedbackForm),
+            })
+                .then(function (response) {
+                    if (response.status === 200) {
+                        // Handle a successful submission (e.g., redirect or display a success message)
+                        console.log("Feedback submitted successfully.");
+                    } else {
+                        // Handle errors if needed
+                        console.error("An error occurred during submission.");
+                    }
+                })
+                .catch(function (error) {
+                    // Handle network or other errors
+                    console.error("An error occurred: " + error.message);
+                })
+                .finally(function () {
+                    // Hide the loading animation and re-enable the form
+                    loadingContainer.style.display = "none";
+                    feedbackForm.querySelector('input[type="submit"]').disabled = false;
+                });
+        });
+    });
+</script> -->

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedbacks</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto;
+        }
+
+        th, td {
+            border: 1px solid #000;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        tr:hover {
+            background-color: #d9edf7;
+        }
+    </style>
+</head>
+<body>
+    <h1>All Feedbacks</h1>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Message</th>
+            <th>Timestamp</th> <!-- Added timestamp column -->
+        </tr>
+        {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback[1] }}</td> <!-- Index 1 is the name -->
+                <td>{{ feedback[2] }}</td> <!-- Index 2 is the email -->
+                <td>{{ feedback[3] }}</td> <!-- Index 3 is the message -->
+                <td>{{ feedback[4] }}</td> <!-- Index 4 is the timestamp -->
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
